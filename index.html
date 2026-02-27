@@ -157,7 +157,7 @@
 
 <script>
   // ⚠️ REPLACE THIS with your deployed Google Apps Script Web App URL
-  const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwbhVqeVkPCUlbkJaPEpjNfp9SiCPU59pVWP899-9rRwrgDi_cHgQOBqFHJOoEserg/exec";
+  const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwWpZ8pEvtYcfSGSiwwg7_sZppg4taEk3CGufRejETz9QRzh8gaNVx1lteH5RdKkaoM/exec";
 </script>
 
 <nav>
@@ -435,7 +435,7 @@
   function updateSummary(){document.getElementById('bookingSummary').innerHTML=`<div class="summary-item"><div class="s-label">Date</div><div class="s-val">${selectedDate}</div></div><div class="summary-item"><div class="s-label">Time</div><div class="s-val">${selectedTime}</div></div><div class="summary-item"><div class="s-label">Members</div><div class="s-val">${memberCount} person${memberCount>1?'s':''}</div></div>`;}
 
   async function submitToSheet(ref,name,phone,email,city,address){
-    if(APPS_SCRIPT_URL==='https://script.google.com/macros/s/AKfycbwbhVqeVkPCUlbkJaPEpjNfp9SiCPU59pVWP899-9rRwrgDi_cHgQOBqFHJOoEserg/exec')return;
+    if(APPS_SCRIPT_URL==='https://script.google.com/macros/s/AKfycbwWpZ8pEvtYcfSGSiwwg7_sZppg4taEk3CGufRejETz9QRzh8gaNVx1lteH5RdKkaoM/exec')return;
     document.getElementById('submittingOverlay').classList.add('show');
     try{await fetch(APPS_SCRIPT_URL,{method:'POST',body:JSON.stringify({action:'addBooking',bookingRef:ref,name,phone,email,city,address,date:selectedDate,time:selectedTime,members:memberCount})});}
     catch(e){console.warn('Sheet save failed:',e);}
