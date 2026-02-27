@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Swargaseema's Ameya — Premium Residential Plots</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{--maroon:#8B1A1A;--gold:#C8920A;--gold-light:#F0C040;--green:#4A7C3F;--cream:#FDFAF3;--warm-white:#FFF8EC;--text-dark:#1C1008;--text-mid:#4A3728;--text-light:#7A6555;--border:rgba(139,26,26,0.15);--shadow:rgba(139,26,26,0.12);}
+  *{margin:0;padding:0;box-sizing:border-box;}html{scroll-behavior:smooth;}body{background:var(--cream);color:var(--text-dark);font-family:'Outfit',sans-serif;overflow-x:hidden;}
+  nav{position:fixed;top:0;width:100%;z-index:200;background:rgba(253,250,243,0.95);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0.8rem 5%;box-shadow:0 2px 20px var(--shadow);animation:slideDown 0.6s ease;}
+  @keyframes slideDown{from{transform:translateY(-100%);opacity:0;}to{transform:translateY(0);opacity:1;}}
+  .logo-area{display:flex;align-items:center;gap:0.7rem;}.logo-svg{width:56px;height:56px;}
+  .logo-text .brand-top{font-size:0.65rem;font-weight:600;letter-spacing:3px;color:var(--maroon);text-transform:uppercase;}
+  .logo-text .brand-main{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:700;color:var(--maroon);line-height:1;}
+  nav ul{list-style:none;display:flex;gap:2rem;}
+  nav ul a{text-decoration:none;color:var(--text-mid);font-size:0.88rem;font-weight:500;transition:color 0.3s;position:relative;}
+  nav ul a::after{content:'';position:absolute;bottom:-4px;left:0;right:0;height:2px;background:var(--maroon);transform:scaleX(0);transition:transform 0.3s;}
+  nav ul a:hover{color:var(--maroon);}nav ul a:hover::after{transform:scaleX(1);}
+  .nav-cta{background:var(--maroon)!important;color:#fff!important;padding:0.65rem 1.6rem;border-radius:3px;font-weight:500;}.nav-cta::after{display:none!important;}
+  .hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;padding-top:78px;}
+  .hero-left{padding:6rem 5% 4rem 7%;display:flex;flex-direction:column;justify-content:center;position:relative;}
+  .hero-left::after{content:'';position:absolute;right:0;top:10%;bottom:10%;width:1px;background:linear-gradient(transparent,var(--border),transparent);}
+  .hero-badge{display:inline-flex;align-items:center;gap:0.5rem;background:rgba(200,146,10,0.1);border:1px solid rgba(200,146,10,0.35);padding:0.4rem 1rem;border-radius:20px;font-size:0.75rem;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);margin-bottom:1.8rem;width:fit-content;animation:fadeUp 0.8s 0.2s both;}
+  .hero-badge .dot{width:7px;height:7px;background:var(--gold);border-radius:50%;animation:pulse 2s infinite;}
+  @keyframes pulse{0%,100%{opacity:1;}50%{opacity:0.4;}}
+  .hero-left h1{font-family:'Cormorant Garamond',serif;font-size:clamp(2.8rem,4vw,4.2rem);font-weight:700;line-height:1.15;color:var(--maroon);margin-bottom:1.2rem;animation:fadeUp 0.8s 0.4s both;}
+  .hero-left h1 em{font-style:italic;color:var(--gold);}
+  .hero-left p{font-size:1.05rem;line-height:1.8;color:var(--text-mid);max-width:460px;margin-bottom:0.8rem;animation:fadeUp 0.8s 0.5s both;}
+  .telugu-text{font-size:0.95rem;color:var(--text-light);font-style:italic;margin-bottom:2.5rem;animation:fadeUp 0.8s 0.6s both;}
+  .hero-actions{display:flex;gap:1rem;flex-wrap:wrap;animation:fadeUp 0.8s 0.7s both;}
+  .btn-primary{background:var(--maroon);color:#fff;padding:1rem 2.2rem;border:none;cursor:pointer;font-family:'Outfit',sans-serif;font-size:0.95rem;font-weight:600;border-radius:3px;transition:all 0.3s;letter-spacing:0.5px;text-decoration:none;display:inline-block;}
+  .btn-primary:hover{background:#6B1212;transform:translateY(-2px);box-shadow:0 8px 25px rgba(139,26,26,0.3);}
+  .btn-secondary{border:2px solid var(--maroon);color:var(--maroon);padding:1rem 2rem;cursor:pointer;font-family:'Outfit',sans-serif;font-size:0.95rem;font-weight:500;border-radius:3px;background:transparent;transition:all 0.3s;text-decoration:none;display:inline-block;}
+  .btn-secondary:hover{background:var(--maroon);color:#fff;}
+  .hero-stats{display:flex;gap:2.5rem;margin-top:3rem;padding-top:2rem;border-top:1px solid var(--border);animation:fadeUp 0.8s 0.9s both;}
+  .stat h3{font-family:'Cormorant Garamond',serif;font-size:2.2rem;color:var(--maroon);font-weight:700;}.stat p{font-size:0.8rem;color:var(--text-light);text-transform:uppercase;letter-spacing:1px;}
+  .hero-right{position:relative;overflow:hidden;background:var(--maroon);}
+  .slideshow{width:100%;height:100%;position:relative;}.slide{position:absolute;inset:0;opacity:0;transition:opacity 1s;}.slide.active{opacity:1;}
+  .slide-bg{width:100%;height:100%;background-size:cover;background-position:center;transition:transform 8s ease;}.slide.active .slide-bg{transform:scale(1.05);}
+  .slide-1 .slide-bg{background:linear-gradient(135deg,#4A7C3F 0%,#2d5a27 30%,#8B1A1A 100%);}
+  .slide-2 .slide-bg{background:linear-gradient(135deg,#2d5a27,#4A7C3F,#C8920A);}
+  .slide-3 .slide-bg{background:linear-gradient(135deg,#8B1A1A,#4A7C3F,#2d5a27);}
+  .slide-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(139,26,26,0.7),transparent 60%);}
+  .slide-caption{position:absolute;bottom:2rem;left:2rem;right:5rem;color:#fff;}
+  .slide-caption h3{font-family:'Cormorant Garamond',serif;font-size:1.6rem;margin-bottom:0.3rem;}.slide-caption p{font-size:0.85rem;opacity:0.85;}
+  .slide-controls{position:absolute;bottom:2.3rem;right:2rem;display:flex;gap:0.5rem;}
+  .slide-dot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,0.4);cursor:pointer;transition:all 0.3s;border:none;}.slide-dot.active{background:#fff;width:24px;border-radius:4px;}
+  .hero-img-tag{position:absolute;top:2rem;right:2rem;background:rgba(255,255,255,0.15);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,0.3);color:#fff;padding:0.6rem 1.2rem;border-radius:20px;font-size:0.8rem;}
+  @keyframes fadeUp{from{opacity:0;transform:translateY(30px);}to{opacity:1;transform:translateY(0);}}
+  .amenities-strip{background:var(--maroon);padding:1.2rem 7%;display:flex;align-items:center;justify-content:center;gap:3rem;flex-wrap:wrap;}
+  .amenity-item{display:flex;align-items:center;gap:0.6rem;color:rgba(255,255,255,0.9);font-size:0.85rem;}.amenity-sep{color:rgba(255,255,255,0.3);}
+  .section{padding:6rem 7%;}
+  .section-tag{display:inline-block;font-size:0.75rem;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:0.8rem;}
+  .section-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2.2rem,3.5vw,3rem);color:var(--maroon);font-weight:700;line-height:1.2;margin-bottom:1.5rem;}
+  .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;}
+  .about-img-wrap{position:relative;}
+  .about-main-img{width:100%;height:480px;background:linear-gradient(135deg,#4A7C3F,#2d5a27,#8B1A1A);border-radius:4px;display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,0.4);font-size:1rem;}
+  .about-float-card{position:absolute;bottom:-1.5rem;right:-1.5rem;background:#fff;padding:1.5rem;border-radius:4px;box-shadow:0 10px 40px var(--shadow);border-left:4px solid var(--gold);min-width:200px;}
+  .about-float-card h4{font-family:'Cormorant Garamond',serif;font-size:2rem;color:var(--maroon);}.about-float-card p{font-size:0.8rem;color:var(--text-light);text-transform:uppercase;letter-spacing:1px;}
+  .about-content p{font-size:1rem;line-height:1.9;color:var(--text-mid);margin-bottom:1.2rem;}
+  .features-list{display:grid;grid-template-columns:1fr 1fr;gap:0.8rem;margin:1.5rem 0;}
+  .feature-item{display:flex;align-items:center;gap:0.6rem;font-size:0.9rem;color:var(--text-mid);}.feature-item::before{content:'✓';color:var(--green);font-weight:700;}
+  .cab-section{background:var(--warm-white);padding:5rem 7%;position:relative;overflow:hidden;}
+  .cab-section::before{content:'🚗';position:absolute;right:5%;top:50%;transform:translateY(-50%);font-size:20rem;opacity:0.04;user-select:none;}
+  .cab-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:5rem;align-items:center;}
+  .cab-cards{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:2rem;}
+  .cab-card{background:#fff;border:1px solid var(--border);padding:1.5rem;border-radius:6px;transition:all 0.3s;position:relative;overflow:hidden;}
+  .cab-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--maroon);transform:scaleX(0);transition:transform 0.3s;}
+  .cab-card:hover{transform:translateY(-4px);box-shadow:0 12px 35px var(--shadow);}.cab-card:hover::before{transform:scaleX(1);}
+  .cab-card .card-icon{font-size:2rem;margin-bottom:0.8rem;}.cab-card h4{font-family:'Cormorant Garamond',serif;font-size:1.2rem;color:var(--maroon);margin-bottom:0.4rem;}.cab-card p{font-size:0.85rem;color:var(--text-light);line-height:1.6;}
+  .cab-cta-box{background:var(--maroon);color:#fff;padding:3rem;border-radius:8px;text-align:center;position:relative;overflow:hidden;}
+  .cab-cta-box::before{content:'';position:absolute;top:-50%;right:-50%;width:200%;height:200%;background:radial-gradient(circle,rgba(200,146,10,0.2),transparent 50%);}
+  .cab-cta-box h3{font-family:'Cormorant Garamond',serif;font-size:2rem;margin-bottom:1rem;}.cab-cta-box p{opacity:0.85;font-size:0.95rem;line-height:1.7;margin-bottom:2rem;}
+  .btn-gold{background:var(--gold);color:var(--text-dark);padding:1rem 2rem;border:none;cursor:pointer;font-family:'Outfit',sans-serif;font-size:1rem;font-weight:600;border-radius:3px;transition:all 0.3s;}
+  .btn-gold:hover{background:var(--gold-light);transform:translateY(-2px);}
+  .gallery-section{padding:5rem 7%;background:#fff;}
+  .gallery-grid{display:grid;grid-template-columns:repeat(4,1fr);grid-template-rows:repeat(2,220px);gap:1rem;margin-top:2.5rem;}
+  .gallery-item{border-radius:4px;overflow:hidden;position:relative;cursor:pointer;}
+  .gallery-item:first-child{grid-column:1/3;grid-row:1/3;}.gallery-item:nth-child(2){grid-column:3/5;}
+  .g-bg{width:100%;height:100%;transition:transform 0.5s;}.gallery-item:hover .g-bg{transform:scale(1.08);}
+  .g-bg-1{background:linear-gradient(135deg,#4A7C3F,#2d5a27,#C8920A);}.g-bg-2{background:linear-gradient(135deg,#8B1A1A,#4A7C3F);}
+  .g-bg-3{background:linear-gradient(135deg,#C8920A,#8B1A1A);}.g-bg-4{background:linear-gradient(135deg,#2d5a27,#C8920A);}.g-bg-5{background:linear-gradient(135deg,#4A7C3F,#8B1A1A);}
+  .g-label{position:absolute;bottom:0;left:0;right:0;padding:1rem;background:linear-gradient(transparent,rgba(0,0,0,0.7));color:#fff;font-size:0.85rem;font-weight:500;}
+  .location-section{padding:5rem 7%;background:var(--warm-white);display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;}
+  .map-placeholder{height:380px;background:linear-gradient(135deg,#e8f5e9,#c8e6c9,#a5d6a7);border-radius:8px;display:flex;flex-direction:column;align-items:center;justify-content:center;border:2px solid var(--border);}
+  .map-placeholder .map-icon{font-size:3rem;margin-bottom:1rem;}.map-placeholder h4{font-family:'Cormorant Garamond',serif;font-size:1.5rem;color:var(--maroon);}.map-placeholder p{font-size:0.9rem;color:var(--text-light);margin-top:0.4rem;}
+  .location-details h2{font-family:'Cormorant Garamond',serif;font-size:2.5rem;color:var(--maroon);margin-bottom:1.2rem;}.location-details p{color:var(--text-mid);line-height:1.8;margin-bottom:1.5rem;}
+  .distance-chips{display:flex;flex-wrap:wrap;gap:0.7rem;}.chip{background:#fff;border:1px solid var(--border);padding:0.5rem 1rem;border-radius:20px;font-size:0.8rem;color:var(--text-mid);}
+  footer{background:var(--text-dark);color:rgba(255,255,255,0.7);padding:4rem 7% 2rem;}
+  .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3rem;margin-bottom:3rem;}
+  .footer-brand .logo-white{color:#fff;font-family:'Cormorant Garamond',serif;font-size:2rem;margin-bottom:1rem;}.footer-brand p{font-size:0.88rem;line-height:1.8;opacity:0.7;}
+  .footer-col h4{color:#fff;font-size:0.85rem;font-weight:600;letter-spacing:2px;text-transform:uppercase;margin-bottom:1.2rem;}
+  .footer-col ul{list-style:none;}.footer-col ul li{margin-bottom:0.6rem;}.footer-col ul a{text-decoration:none;color:rgba(255,255,255,0.6);font-size:0.88rem;transition:color 0.2s;}.footer-col ul a:hover{color:var(--gold);}
+  .footer-bottom{border-top:1px solid rgba(255,255,255,0.1);padding-top:2rem;display:flex;justify-content:space-between;font-size:0.82rem;opacity:0.5;}
+  /* MODAL */
+  .modal-overlay{position:fixed;inset:0;z-index:1000;background:rgba(28,16,8,0.7);backdrop-filter:blur(6px);display:none;align-items:center;justify-content:center;padding:1rem;}
+  .modal-overlay.open{display:flex;}
+  .modal{background:#fff;border-radius:12px;width:100%;max-width:680px;max-height:92vh;overflow-y:auto;position:relative;animation:modalIn 0.4s cubic-bezier(0.34,1.56,0.64,1);box-shadow:0 30px 80px rgba(0,0,0,0.3);}
+  @keyframes modalIn{from{opacity:0;transform:scale(0.85) translateY(30px);}to{opacity:1;transform:scale(1) translateY(0);}}
+  .modal-header{background:var(--maroon);padding:2rem 2.5rem;border-radius:12px 12px 0 0;color:#fff;position:relative;}
+  .modal-header .logo-mini{display:flex;align-items:center;gap:0.6rem;margin-bottom:1rem;}
+  .modal-header .logo-mini-icon{width:40px;height:40px;background:rgba(255,255,255,0.15);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.3rem;}
+  .modal-header .logo-mini span{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:700;}
+  .modal-header h2{font-family:'Cormorant Garamond',serif;font-size:2rem;margin-bottom:0.3rem;}.modal-header p{opacity:0.85;font-size:0.9rem;}
+  .modal-close{position:absolute;top:1.2rem;right:1.5rem;background:rgba(255,255,255,0.15);border:none;color:#fff;font-size:1.3rem;width:36px;height:36px;border-radius:50%;cursor:pointer;transition:background 0.2s;display:flex;align-items:center;justify-content:center;}
+  .modal-close:hover{background:rgba(255,255,255,0.3);}
+  .steps-bar{display:flex;padding:1.5rem 2.5rem;border-bottom:1px solid #f0e8e0;}
+  .step-item{flex:1;display:flex;align-items:center;gap:0.5rem;font-size:0.8rem;font-weight:500;color:var(--text-light);position:relative;}
+  .step-item:not(:last-child)::after{content:'';position:absolute;left:28px;right:0;top:50%;height:2px;background:#e8ddd5;transform:translateY(-50%);}
+  .step-item.active{color:var(--maroon);}.step-item.done{color:var(--green);}
+  .step-item.active:not(:last-child)::after,.step-item.done:not(:last-child)::after{background:var(--green);}
+  .step-num{width:26px;height:26px;border-radius:50%;background:#e8ddd5;color:var(--text-light);display:flex;align-items:center;justify-content:center;font-size:0.75rem;font-weight:700;transition:all 0.3s;flex-shrink:0;z-index:1;}
+  .step-item.active .step-num{background:var(--maroon);color:#fff;}.step-item.done .step-num{background:var(--green);color:#fff;}.step-item.done .step-num::after{content:'✓';}
+  .modal-body{padding:2rem 2.5rem;}.step-panel{display:none;}.step-panel.active{display:block;}
+  .step-panel h3{font-family:'Cormorant Garamond',serif;font-size:1.6rem;color:var(--maroon);margin-bottom:0.5rem;}.step-panel > p{color:var(--text-light);font-size:0.9rem;margin-bottom:1.8rem;}
+  .date-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem;}
+  .date-card{border:2px solid #e8ddd5;border-radius:8px;padding:1.2rem 1.5rem;cursor:pointer;transition:all 0.3s;display:flex;align-items:center;gap:1rem;}
+  .date-card:hover{border-color:var(--maroon);background:rgba(139,26,26,0.03);}.date-card.selected{border-color:var(--maroon);background:rgba(139,26,26,0.06);}
+  .date-card .date-icon{font-size:1.8rem;}.date-card .date-info h4{font-weight:600;color:var(--text-dark);font-size:0.95rem;}.date-card .date-info p{font-size:0.8rem;color:var(--text-light);margin-top:0.2rem;}
+  .date-card .check{margin-left:auto;width:22px;height:22px;border-radius:50%;border:2px solid #e8ddd5;display:flex;align-items:center;justify-content:center;font-size:0.7rem;transition:all 0.3s;flex-shrink:0;}
+  .date-card.selected .check{background:var(--maroon);border-color:var(--maroon);color:#fff;}.date-card.selected .check::after{content:'✓';}
+  .time-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0.7rem;}
+  .time-slot{border:2px solid #e8ddd5;border-radius:6px;padding:0.7rem 0.5rem;text-align:center;cursor:pointer;font-size:0.85rem;font-weight:500;color:var(--text-mid);transition:all 0.3s;}
+  .time-slot:hover{border-color:var(--maroon);color:var(--maroon);}.time-slot.selected{background:var(--maroon);border-color:var(--maroon);color:#fff;}
+  .members-input-wrap{text-align:center;padding:1rem 0;}
+  .counter{display:flex;align-items:center;justify-content:center;gap:2rem;margin:1.5rem 0;}
+  .counter-btn{width:52px;height:52px;border-radius:50%;border:2px solid var(--maroon);color:var(--maroon);font-size:1.5rem;cursor:pointer;background:#fff;display:flex;align-items:center;justify-content:center;transition:all 0.3s;}
+  .counter-btn:hover{background:var(--maroon);color:#fff;}
+  .counter-value{font-family:'Cormorant Garamond',serif;font-size:4rem;font-weight:700;color:var(--maroon);min-width:80px;text-align:center;line-height:1;}
+  .members-note{background:rgba(200,146,10,0.1);border:1px solid rgba(200,146,10,0.3);padding:0.8rem 1.2rem;border-radius:6px;font-size:0.85rem;color:var(--text-mid);text-align:center;}
+  .form-group{margin-bottom:1.2rem;}.form-group label{display:block;font-size:0.82rem;font-weight:600;color:var(--text-mid);margin-bottom:0.5rem;letter-spacing:0.5px;text-transform:uppercase;}
+  .form-group input{width:100%;padding:0.85rem 1rem;border:2px solid #e8ddd5;border-radius:6px;font-family:'Outfit',sans-serif;font-size:0.95rem;color:var(--text-dark);background:#fff;transition:border-color 0.3s,box-shadow 0.3s;outline:none;}
+  .form-group input:focus{border-color:var(--maroon);box-shadow:0 0 0 3px rgba(139,26,26,0.08);}
+  .form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+  .booking-summary{background:var(--warm-white);border:1px solid var(--border);border-radius:8px;padding:1.2rem 1.5rem;margin-bottom:1.5rem;display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;}
+  .summary-item{text-align:center;}.summary-item .s-label{font-size:0.72rem;text-transform:uppercase;letter-spacing:1px;color:var(--text-light);margin-bottom:0.3rem;}.summary-item .s-val{font-weight:600;color:var(--maroon);font-size:0.95rem;}
+  .modal-footer{padding:1.5rem 2.5rem;border-top:1px solid #f0e8e0;display:flex;justify-content:space-between;align-items:center;}
+  .btn-back{background:transparent;border:1px solid #ddd;color:var(--text-light);padding:0.8rem 1.5rem;border-radius:4px;cursor:pointer;font-family:'Outfit',sans-serif;font-size:0.9rem;transition:all 0.2s;}
+  .btn-back:hover{border-color:var(--text-mid);color:var(--text-mid);}
+  .btn-next{background:var(--maroon);color:#fff;padding:0.9rem 2rem;border:none;border-radius:4px;cursor:pointer;font-family:'Outfit',sans-serif;font-size:0.95rem;font-weight:600;transition:all 0.3s;}
+  .btn-next:hover{background:#6B1212;transform:translateY(-1px);box-shadow:0 6px 20px rgba(139,26,26,0.3);}
+  .btn-next:disabled{opacity:0.5;cursor:not-allowed;transform:none;box-shadow:none;}
+  .success-view{text-align:center;padding:2rem 1rem;}
+  .success-icon{width:80px;height:80px;background:linear-gradient(135deg,var(--green),#2d7a3a);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:2.5rem;margin:0 auto 1.5rem;animation:popIn 0.5s cubic-bezier(0.34,1.56,0.64,1);}
+  @keyframes popIn{from{transform:scale(0);}to{transform:scale(1);}}
+  .success-view h2{font-family:'Cormorant Garamond',serif;font-size:2.2rem;color:var(--maroon);margin-bottom:0.8rem;}
+  .success-view p{color:var(--text-mid);line-height:1.7;max-width:420px;margin:0 auto 0.5rem;}
+  .booking-ref-box{display:inline-block;background:rgba(139,26,26,0.08);border:1px dashed var(--maroon);padding:0.6rem 1.5rem;border-radius:6px;font-weight:700;color:var(--maroon);letter-spacing:3px;font-size:1.1rem;margin:1.2rem 0;}
+  .submitting-overlay{position:absolute;inset:0;background:rgba(255,255,255,0.9);display:none;align-items:center;justify-content:center;flex-direction:column;gap:1rem;z-index:10;border-radius:12px;}
+  .submitting-overlay.show{display:flex;}.spinner{width:40px;height:40px;border:3px solid #f0e8e0;border-top-color:var(--maroon);border-radius:50%;animation:spin 0.8s linear infinite;}
+  @keyframes spin{to{transform:rotate(360deg);}}
+  @media(max-width:900px){nav ul{display:none;}.hero{grid-template-columns:1fr;}.hero-right{height:50vw;min-height:300px;}.hero-left{padding:5rem 5% 3rem;}.about-grid,.cab-grid,.location-section{grid-template-columns:1fr;}.footer-grid{grid-template-columns:1fr 1fr;}.time-grid{grid-template-columns:repeat(3,1fr);}}
+</style>
+</head>
+<body>
+
+<script>
+  // ⚠️ REPLACE THIS with your deployed Google Apps Script Web App URL
+  const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwbhVqeVkPCUlbkJaPEpjNfp9SiCPU59pVWP899-9rRwrgDi_cHgQOBqFHJOoEserg/exec";
+</script>
+
+<nav>
+  <div class="logo-area">
+    <svg class="logo-svg" viewBox="0 0 56 56" fill="none">
+      <path d="M10 38 Q14 32 20 34 Q24 35 24 40 L24 46 Q18 47 12 44 Z" fill="#C8920A"/>
+      <path d="M46 38 Q42 32 36 34 Q32 35 32 40 L32 46 Q38 47 44 44 Z" fill="#C8920A"/>
+      <path d="M28 42 L28 22" stroke="#4A7C3F" stroke-width="2.5" stroke-linecap="round"/>
+      <ellipse cx="22" cy="20" rx="7" ry="4" fill="#4A7C3F" transform="rotate(-30 22 20)"/>
+      <ellipse cx="34" cy="20" rx="7" ry="4" fill="#4A7C3F" transform="rotate(30 34 20)"/>
+      <ellipse cx="28" cy="15" rx="6" ry="3.5" fill="#5A8C50" transform="rotate(-10 28 15)"/>
+    </svg>
+    <div class="logo-text">
+      <div class="brand-top">Swargaseema's</div>
+      <div class="brand-main">Ameya</div>
+    </div>
+  </div>
+  <ul>
+    <li><a href="#about">About</a></li>
+    <li><a href="#cab">Cab Service</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#location">Location</a></li>
+    <li><a href="#" class="nav-cta" onclick="openModal();return false;">Check Availability</a></li>
+  </ul>
+</nav>
+
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-badge"><span class="dot"></span>MUDA Approved · RERA Registered</div>
+    <h1>Premium Residential<br><em>Open Plots</em><br>Near Shadnagar</h1>
+    <p>Welcome to Swargaseema Ameya — where your dream home begins. Premium residential plots in Nerellapalle, Telangana.</p>
+    <p class="telugu-text">"అమేయ" — ఒక్కసారి ఫ్యామిలీతో విజిట్ చేసి మంచి నిర్ణయం తీసుకోండి</p>
+    <div class="hero-actions">
+      <button class="btn-primary" onclick="openModal()">Check Availability</button>
+      <a href="#about" class="btn-secondary">Explore Project</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat"><h3>500+</h3><p>Plots Available</p></div>
+      <div class="stat"><h3>100%</h3><p>Legal & Clear Title</p></div>
+      <div class="stat"><h3>Free</h3><p>Cab to Site Visit</p></div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="slideshow">
+      <div class="slide active slide-1"><div class="slide-bg"></div><div class="slide-overlay"></div><div class="slide-caption"><h3>Aerial View — Ameya Township</h3><p>Nerellapalle, Near Shadnagar, Telangana</p></div></div>
+      <div class="slide slide-2"><div class="slide-bg"></div><div class="slide-overlay"></div><div class="slide-caption"><h3>Swimming Pool & Sports Complex</h3><p>World-class amenities for your family</p></div></div>
+      <div class="slide slide-3"><div class="slide-bg"></div><div class="slide-overlay"></div><div class="slide-caption"><h3>Lush Green Landscapes</h3><p>Surrounded by nature</p></div></div>
+    </div>
+    <div class="slide-controls">
+      <button class="slide-dot active" onclick="goSlide(0)"></button>
+      <button class="slide-dot" onclick="goSlide(1)"></button>
+      <button class="slide-dot" onclick="goSlide(2)"></button>
+    </div>
+    <div class="hero-img-tag">📍 Nerellapalle, TS</div>
+  </div>
+</section>
+
+<div class="amenities-strip">
+  <div class="amenity-item">🏊 Swimming Pool</div><span class="amenity-sep">·</span>
+  <div class="amenity-item">🎾 Tennis Court</div><span class="amenity-sep">·</span>
+  <div class="amenity-item">🌿 Landscaped Gardens</div><span class="amenity-sep">·</span>
+  <div class="amenity-item">🧒 Children's Play Area</div><span class="amenity-sep">·</span>
+  <div class="amenity-item">🛡️ 24/7 Security</div><span class="amenity-sep">·</span>
+  <div class="amenity-item">🚗 Free Cab Service</div>
+</div>
+
+<section class="section" id="about">
+  <div class="about-grid">
+    <div class="about-img-wrap">
+      <div class="about-main-img">🌿 Aerial View</div>
+      <div class="about-float-card"><h4>2022</h4><p>RERA Registered</p></div>
+    </div>
+    <div class="about-content">
+      <span class="section-tag">About the Project</span>
+      <h2 class="section-title">Your Dream Begins at <em>Ameya</em></h2>
+      <p>Swargaseema's Ameya is a premium residential open plots project located near Shadnagar, Telangana's fastest-growing investment corridor. MUDA approved, RERA registered, 100% clear title.</p>
+      <p>Set amidst lush greenery near Himayat Sagar reservoir, Ameya offers the perfect blend of nature, modern amenities, and future value growth.</p>
+      <div class="features-list">
+        <div class="feature-item">MUDA Approved</div><div class="feature-item">RERA Registered</div>
+        <div class="feature-item">Paved Roads</div><div class="feature-item">Underground Drainage</div>
+        <div class="feature-item">Electricity Provision</div><div class="feature-item">Water Supply</div>
+        <div class="feature-item">Compound Wall</div><div class="feature-item">Club House</div>
+      </div>
+      <button class="btn-primary" onclick="openModal()">Book Free Site Visit →</button>
+    </div>
+  </div>
+</section>
+
+<section class="cab-section" id="cab">
+  <div class="cab-grid">
+    <div>
+      <span class="section-tag">Complimentary Service</span>
+      <h2 class="section-title">We Come to <em>You</em> — Free Cab to Site</h2>
+      <p style="color:var(--text-mid);line-height:1.8;margin-bottom:1rem;">Experience a hassle-free site visit. We arrange a complimentary cab from your location directly to Ameya township.</p>
+      <div class="cab-cards">
+        <div class="cab-card"><div class="card-icon">📍</div><h4>Pickup from Your Door</h4><p>We pick you up from Hyderabad, Shadnagar, or nearby.</p></div>
+        <div class="cab-card"><div class="card-icon">🕐</div><h4>Flexible Timings</h4><p>Slots from 7:00 AM to 2:30 PM.</p></div>
+        <div class="cab-card"><div class="card-icon">👨‍👩‍👧</div><h4>Family Welcome</h4><p>Bring the whole family — cabs accommodate all.</p></div>
+        <div class="cab-card"><div class="card-icon">🎁</div><h4>Completely Free</h4><p>No obligations, no hidden costs.</p></div>
+      </div>
+    </div>
+    <div class="cab-cta-box">
+      <div style="font-size:3.5rem;margin-bottom:1rem;">🚗</div>
+      <h3>Book Your Free Cab Now</h3>
+      <p>Multiple dates available every week. Spots fill up quickly on weekends!</p>
+      <button class="btn-gold" onclick="openModal()">Check Availability & Book</button>
+      <div style="margin-top:1.5rem;opacity:0.7;font-size:0.8rem;">📞 +91 90000 00000 · Free · No Obligation</div>
+    </div>
+  </div>
+</section>
+
+<section class="gallery-section" id="gallery">
+  <div style="text-align:center;margin-bottom:0.5rem;">
+    <span class="section-tag">Photo Gallery</span>
+    <h2 class="section-title">See Ameya for Yourself</h2>
+  </div>
+  <div class="gallery-grid">
+    <div class="gallery-item"><div class="g-bg g-bg-1" style="height:100%;min-height:460px;"></div><div class="g-label">🌿 Aerial Overview</div></div>
+    <div class="gallery-item"><div class="g-bg g-bg-2" style="height:100%;min-height:220px;"></div><div class="g-label">🏊 Swimming Pool</div></div>
+    <div class="gallery-item"><div class="g-bg g-bg-3" style="height:220px;"></div><div class="g-label">🎾 Tennis Courts</div></div>
+    <div class="gallery-item"><div class="g-bg g-bg-4" style="height:220px;"></div><div class="g-label">🏡 Plot Layouts</div></div>
+    <div class="gallery-item"><div class="g-bg g-bg-5" style="height:220px;"></div><div class="g-label">🧒 Children's Park</div></div>
+  </div>
+</section>
+
+<section class="location-section" id="location">
+  <div class="map-placeholder"><div class="map-icon">🗺️</div><h4>Nerellapalle, Near Shadnagar</h4><p>Rangareddy District, Telangana</p></div>
+  <div class="location-details">
+    <span class="section-tag">Location Advantage</span>
+    <h2>Perfectly Connected,<br>Peacefully Situated</h2>
+    <p>Located in Nerellapalle off the Hyderabad–Kurnool highway — close to the city, far from the chaos.</p>
+    <div class="distance-chips">
+      <div class="chip">✈️ RGIA Airport — 30 min</div><div class="chip">🏙️ Shadnagar — 5 km</div>
+      <div class="chip">🌊 Himayat Sagar — 10 min</div><div class="chip">🏫 Schools Nearby</div>
+      <div class="chip">🏥 Hospitals Nearby</div><div class="chip">🛒 Markets Close By</div>
+    </div>
+    <br><button class="btn-primary" onclick="openModal()">Book Free Site Visit</button>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand"><div class="logo-white">Swargaseema's Ameya</div><p>Premium Residential Open Plots near Shadnagar, Nerellapalle. MUDA Approved & RERA Registered.</p></div>
+    <div class="footer-col"><h4>Quick Links</h4><ul><li><a href="#about">About Project</a></li><li><a href="#gallery">Gallery</a></li><li><a href="#location">Location</a></li></ul></div>
+    <div class="footer-col"><h4>Visit</h4><ul><li><a href="#" onclick="openModal();return false;">Book Site Visit</a></li><li><a href="#cab">Free Cab Service</a></li></ul></div>
+    <div class="footer-col"><h4>Contact</h4><ul><li><a href="tel:+919000000000">+91 90000 00000</a></li><li><a href="#">Nerellapalle, Shadnagar, TS</a></li></ul></div>
+  </div>
+  <div class="footer-bottom"><span>© 2024 Swargaseema's Ameya. All rights reserved.</span><span>RERA Reg. No: P02400XXXXXXX</span></div>
+</footer>
+
+<!-- BOOKING MODAL -->
+<div class="modal-overlay" id="modalOverlay" onclick="handleOverlayClick(event)">
+  <div class="modal" id="modal">
+    <div class="submitting-overlay" id="submittingOverlay">
+      <div class="spinner"></div>
+      <p style="color:var(--maroon);font-weight:500;">Saving your booking...</p>
+    </div>
+    <div class="modal-header">
+      <div class="logo-mini"><div class="logo-mini-icon">🌿</div><span>Swargaseema's Ameya</span></div>
+      <h2>Check Availability</h2>
+      <p>Free site visit with complimentary cab service</p>
+      <button class="modal-close" onclick="closeModal()">✕</button>
+    </div>
+    <div class="steps-bar">
+      <div class="step-item active" data-step="1"><span class="step-num">1</span><span>Date</span></div>
+      <div class="step-item" data-step="2"><span class="step-num">2</span><span>Time</span></div>
+      <div class="step-item" data-step="3"><span class="step-num">3</span><span>Members</span></div>
+      <div class="step-item" data-step="4"><span class="step-num">4</span><span>Register</span></div>
+    </div>
+    <div class="modal-body">
+      <div class="step-panel active" id="step1">
+        <h3>Select Your Preferred Date</h3>
+        <p>Choose from 4 available visit dates. Spots are limited — book early!</p>
+        <div class="date-grid" id="dateGrid"></div>
+      </div>
+      <div class="step-panel" id="step2">
+        <h3>Choose Your Arrival Time</h3>
+        <p>Select a time slot between 7:00 AM and 2:30 PM.</p>
+        <div class="time-grid" id="timeGrid"></div>
+      </div>
+      <div class="step-panel" id="step3">
+        <h3>How Many Members?</h3>
+        <p>Tell us how many family members are visiting so we can arrange the right cab.</p>
+        <div class="members-input-wrap">
+          <div class="counter">
+            <button class="counter-btn" onclick="changeMember(-1)">−</button>
+            <div class="counter-value" id="memberCount">2</div>
+            <button class="counter-btn" onclick="changeMember(1)">+</button>
+          </div>
+          <div style="color:var(--text-light);font-size:0.9rem;margin-bottom:1.5rem;">members attending</div>
+          <div class="members-note">🚗 1–4 members: Sedan &nbsp;·&nbsp; 5–8 members: SUV — all complimentary!</div>
+        </div>
+      </div>
+      <div class="step-panel" id="step4">
+        <h3>Complete Your Registration</h3>
+        <p>Fill in your details and we'll confirm your visit.</p>
+        <div class="booking-summary" id="bookingSummary"></div>
+        <div class="form-row">
+          <div class="form-group"><label>Full Name *</label><input type="text" id="regName" placeholder="e.g. Ramesh Kumar"/></div>
+          <div class="form-group"><label>Mobile Number *</label><input type="tel" id="regPhone" placeholder="+91 98765 43210"/></div>
+        </div>
+        <div class="form-row">
+          <div class="form-group"><label>Email Address</label><input type="email" id="regEmail" placeholder="email@example.com"/></div>
+          <div class="form-group"><label>City / Area *</label><input type="text" id="regCity" placeholder="e.g. Hyderabad"/></div>
+        </div>
+        <div class="form-group"><label>Pickup Address for Cab *</label><input type="text" id="regAddress" placeholder="Enter your full address for cab pickup"/></div>
+      </div>
+      <div class="step-panel" id="stepSuccess">
+        <div class="success-view">
+          <div class="success-icon">✓</div>
+          <h2>Booking Confirmed!</h2>
+          <p>Thank you for registering at Swargaseema's Ameya. Your booking reference is:</p>
+          <div class="booking-ref-box" id="bookingRef">AMY-000000</div>
+          <p>Our team will call you within <strong>24 hours</strong> to confirm your cab details. We look forward to welcoming your family!</p>
+          <br><p style="font-size:0.85rem;color:var(--text-light);">📞 For queries: +91 90000 00000</p>
+          <br><button class="btn-primary" onclick="closeModal()" style="margin-top:1rem;">Back to Website</button>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer" id="modalFooter">
+      <button class="btn-back" id="btnBack" onclick="prevStep()" style="visibility:hidden">← Back</button>
+      <button class="btn-next" id="btnNext" onclick="nextStep()" disabled>Select a Date →</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  let currentSlide=0;
+  const slides=document.querySelectorAll('.slide'),dots=document.querySelectorAll('.slide-dot');
+  function goSlide(n){slides[currentSlide].classList.remove('active');dots[currentSlide].classList.remove('active');currentSlide=n;slides[n].classList.add('active');dots[n].classList.add('active');}
+  setInterval(()=>goSlide((currentSlide+1)%slides.length),4500);
+
+  let currentStep=1,selectedDate='',selectedTime='',memberCount=2;
+
+  function getUpcomingDates(){const d=[];let x=new Date();x.setDate(x.getDate()+1);while(d.length<4){if(x.getDay()!==0)d.push(new Date(x));x.setDate(x.getDate()+1);}return d;}
+  function formatDate(d){const D=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'],M=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];return{day:D[d.getDay()],date:d.getDate(),month:M[d.getMonth()],year:d.getFullYear(),full:`${D[d.getDay()]}, ${d.getDate()} ${M[d.getMonth()]} ${d.getFullYear()}`};}
+
+  function buildDateGrid(){
+    const g=document.getElementById('dateGrid'),icons=['📅','🗓️','📆','🗒️'];g.innerHTML='';
+    getUpcomingDates().forEach((d,i)=>{const f=formatDate(d),c=document.createElement('div');c.className='date-card';
+      c.innerHTML=`<span class="date-icon">${icons[i]}</span><div class="date-info"><h4>${f.day}, ${f.date} ${f.month}</h4><p>${f.year}</p></div><span class="check"></span>`;
+      c.addEventListener('click',()=>{document.querySelectorAll('.date-card').forEach(x=>x.classList.remove('selected'));c.classList.add('selected');selectedDate=f.full;document.getElementById('btnNext').disabled=false;document.getElementById('btnNext').textContent='Next: Choose Time →';});
+      g.appendChild(c);});
+  }
+
+  function buildTimeGrid(){
+    const g=document.getElementById('timeGrid');g.innerHTML='';
+    const slots=[];let h=7,m=0;
+    while(!(h===14&&m===30)){const s=h<12?'AM':'PM',dh=h>12?h-12:h;slots.push(`${dh}:${m===0?'00':'30'} ${s}`);m+=30;if(m===60){m=0;h++;}}
+    slots.push('2:30 PM');
+    slots.forEach(slot=>{const el=document.createElement('div');el.className='time-slot';el.textContent=slot;
+      el.addEventListener('click',()=>{document.querySelectorAll('.time-slot').forEach(t=>t.classList.remove('selected'));el.classList.add('selected');selectedTime=slot;document.getElementById('btnNext').disabled=false;document.getElementById('btnNext').textContent='Next: Members →';});
+      g.appendChild(el);});
+  }
+
+  function changeMember(d){memberCount=Math.max(1,Math.min(12,memberCount+d));document.getElementById('memberCount').textContent=memberCount;}
+
+  function openModal(){document.getElementById('modalOverlay').classList.add('open');document.body.style.overflow='hidden';buildDateGrid();currentStep=1;renderStep();}
+  function closeModal(){document.getElementById('modalOverlay').classList.remove('open');document.body.style.overflow='';selectedDate='';selectedTime='';memberCount=2;currentStep=1;}
+  function handleOverlayClick(e){if(e.target===document.getElementById('modalOverlay'))closeModal();}
+
+  function renderStep(){
+    document.querySelectorAll('.step-panel').forEach(p=>p.classList.remove('active'));
+    if(currentStep===5){document.getElementById('stepSuccess').classList.add('active');document.getElementById('modalFooter').style.display='none';}
+    else{document.getElementById('step'+currentStep).classList.add('active');document.getElementById('modalFooter').style.display='flex';}
+    document.querySelectorAll('.step-item').forEach(item=>{const s=parseInt(item.dataset.step);item.classList.remove('active','done');if(s===currentStep)item.classList.add('active');else if(s<currentStep)item.classList.add('done');});
+    const bk=document.getElementById('btnBack'),nx=document.getElementById('btnNext');
+    bk.style.visibility=currentStep>1?'visible':'hidden';
+    if(currentStep===1){nx.disabled=!selectedDate;nx.textContent=selectedDate?'Next: Choose Time →':'Select a Date →';}
+    else if(currentStep===2){nx.disabled=!selectedTime;nx.textContent=selectedTime?'Next: Members →':'Select a Time →';}
+    else if(currentStep===3){nx.disabled=false;nx.textContent='Next: Register →';}
+    else if(currentStep===4){nx.disabled=false;nx.textContent='✓ Confirm Booking';updateSummary();}
+  }
+
+  function updateSummary(){document.getElementById('bookingSummary').innerHTML=`<div class="summary-item"><div class="s-label">Date</div><div class="s-val">${selectedDate}</div></div><div class="summary-item"><div class="s-label">Time</div><div class="s-val">${selectedTime}</div></div><div class="summary-item"><div class="s-label">Members</div><div class="s-val">${memberCount} person${memberCount>1?'s':''}</div></div>`;}
+
+  async function submitToSheet(ref,name,phone,email,city,address){
+    if(APPS_SCRIPT_URL==='YOUR_APPS_SCRIPT_URL_HERE')return;
+    document.getElementById('submittingOverlay').classList.add('show');
+    try{await fetch(APPS_SCRIPT_URL,{method:'POST',body:JSON.stringify({action:'addBooking',bookingRef:ref,name,phone,email,city,address,date:selectedDate,time:selectedTime,members:memberCount})});}
+    catch(e){console.warn('Sheet save failed:',e);}
+    document.getElementById('submittingOverlay').classList.remove('show');
+  }
+
+  async function nextStep(){
+    if(currentStep===4){
+      const name=document.getElementById('regName').value.trim(),phone=document.getElementById('regPhone').value.trim(),city=document.getElementById('regCity').value.trim(),addr=document.getElementById('regAddress').value.trim(),email=document.getElementById('regEmail').value.trim();
+      if(!name||!phone||!city||!addr){alert('Please fill in all required fields.');return;}
+      const ref='AMY-'+Math.floor(100000+Math.random()*900000);
+      document.getElementById('bookingRef').textContent=ref;
+      await submitToSheet(ref,name,phone,email,city,addr);
+      currentStep=5;renderStep();return;
+    }
+    currentStep++;if(currentStep===2)buildTimeGrid();renderStep();
+  }
+
+  function prevStep(){if(currentStep<=1)return;currentStep--;renderStep();}
+  document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal();});
+</script>
+</body>
+</html>
