@@ -157,7 +157,7 @@
 
 <script>
   // ⚠️ REPLACE THIS with your deployed Google Apps Script Web App URL
-  const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzCykOr1kU46uy3SQuZQ7e7KEfGLJ_WNUqdCCLQK6ISHME5rbbioONu2FfcE56r_dol/exec";
+  const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxEzuuAR7sG8jpKIBmcx2Zvg12oYXMlrHKc1Z88RoDV64zy1DdspkV1NUo91VhDay_Y/exec";
 </script>
 
 <nav>
@@ -435,10 +435,31 @@
   function updateSummary(){document.getElementById('bookingSummary').innerHTML=`<div class="summary-item"><div class="s-label">Date</div><div class="s-val">${selectedDate}</div></div><div class="summary-item"><div class="s-label">Time</div><div class="s-val">${selectedTime}</div></div><div class="summary-item"><div class="s-label">Members</div><div class="s-val">${memberCount} person${memberCount>1?'s':''}</div></div>`;}
 
   async function submitToSheet(ref,name,phone,email,city,address){
-    if(APPS_SCRIPT_URL==='https://script.google.com/macros/s/AKfycbzCykOr1kU46uy3SQuZQ7e7KEfGLJ_WNUqdCCLQK6ISHME5rbbioONu2FfcE56r_dol/exec')return;
+    if(!APPS_SCRIPT_URL || APPS_SCRIPT_URL==='YOUR_APPS_SCRIPT_URL_HERE') return;
     document.getElementById('submittingOverlay').classList.add('show');
-    try{await fetch(APPS_SCRIPT_URL,{method:'POST',body:JSON.stringify({action:'addBooking',bookingRef:ref,name,phone,email,city,address,date:selectedDate,time:selectedTime,members:memberCount})});}
-    catch(e){console.warn('Sheet save failed:',e);}
+    try {
+      const payload = {
+        action:'addBooking',
+        bookingRef: ref,
+        name: name,
+        phone: phone,
+        email: email,
+        city: city,
+        address: address,
+        date: selectedDate,
+        time: selectedTime,
+        members: memberCount
+      };
+      // Use no-cors mode — this is required for Google Apps Script from GitHub Pages
+      await fetch(APPS_SCRIPT_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'text/plain' },
+        body: JSON.stringify(payload)
+      });
+    } catch(e) {
+      console.warn('Sheet save error:', e);
+    }
     document.getElementById('submittingOverlay').classList.remove('show');
   }
 
@@ -459,6 +480,3 @@
 </script>
 </body>
 </html>
-
-
-
